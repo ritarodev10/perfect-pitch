@@ -6,20 +6,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "api.sofascore.app",
-      },
-      // Allow images from localhost (for development)
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "3000",
-      },
-      // Allow images from Vercel deployments
-      {
-        protocol: "https",
-        hostname: "**.vercel.app",
+        pathname: "/api/v1/**",
       },
     ],
-    unoptimized: false,
+    // Disable optimization to avoid issues with external images
+    unoptimized: true,
   },
 };
 
