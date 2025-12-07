@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import type { GetStandingsResponse } from "@/types/sofascore/tournaments/get-standings";
 import { getTeamImageUrl } from "@/utils/imageProxy";
 
@@ -103,10 +104,13 @@ export const StandingsSnippet = ({
                   <td className="p-3">
                     <div className="flex items-center gap-2">
                       <div className="shrink-0 w-6 h-6">
-                        <img
+                        <Image
                           src={getTeamImageUrl(row.team.id)}
                           alt={row.team.name}
+                          width={20}
+                          height={20}
                           className="w-full h-full object-contain"
+                          unoptimized
                           onError={(e) => {
                             (e.target as HTMLImageElement).style.display =
                               "none";

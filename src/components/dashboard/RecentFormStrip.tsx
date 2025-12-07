@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import type {
   SofaScoreMatchesResponse,
@@ -253,10 +254,13 @@ export const RecentFormStrip = ({
           >
             <div className="relative w-12 h-12 shrink-0">
               <div className="absolute inset-0 bg-white/5 rounded-full blur-sm" />
-              <img
+              <Image
                 src={currentMatch.opponentLogo}
                 alt={currentMatch.opponent}
-                className="absolute inset-0 w-full h-full object-contain z-10"
+                fill
+                className="object-contain relative z-10"
+                sizes="48px"
+                unoptimized
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
