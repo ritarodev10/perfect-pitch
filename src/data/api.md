@@ -1,0 +1,5 @@
+API_URL=https://api.api-sports.io/football
+API_KEY=e6398c708c220616fa0a2f8a61d3b75a
+SEASON=2023
+LEAGUE_ID=135
+TEAM_ID=489

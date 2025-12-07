@@ -1,0 +1,93 @@
+import { API_FIXTURE_BY_ID_RESPONSE } from "./fixture-by-id";
+import { API_FIXTURES_BY_LEAGUE_SEASON_RESPONSE } from "./fixtures-by-league-season";
+import { API_FIXTURES_BY_SEASON_TEAM_RESPONSE } from "./fixtures-by-season-team";
+import { API_FIXTURES_BY_SEASON_TEAM_LEAGUE_RESPONSE } from "./fixtures-by-season-team-league";
+
+export const FIXTURE_BY_ID = API_FIXTURE_BY_ID_RESPONSE.response.map((item) => ({
+  id: item.fixture.id,
+  date: item.fixture.date,
+  timestamp: item.fixture.timestamp,
+  referee: item.fixture.referee,
+  venue: item.fixture.venue.name,
+  city: item.fixture.venue.city,
+  status: item.fixture.status.short,
+  statusLong: item.fixture.status.long,
+  league: item.league.name,
+  round: item.league.round,
+  homeTeam: item.teams.home.name,
+  homeTeamId: item.teams.home.id,
+  homeTeamLogo: item.teams.home.logo,
+  awayTeam: item.teams.away.name,
+  awayTeamId: item.teams.away.id,
+  awayTeamLogo: item.teams.away.logo,
+  homeGoals: item.goals.home,
+  awayGoals: item.goals.away,
+  winner: item.teams.home.winner ? item.teams.home.name : item.teams.away.winner ? item.teams.away.name : null,
+}));
+
+export const FIXTURES_BY_LEAGUE_SEASON = API_FIXTURES_BY_LEAGUE_SEASON_RESPONSE.response.map((item) => ({
+  id: item.fixture.id,
+  date: item.fixture.date,
+  timestamp: item.fixture.timestamp,
+  referee: item.fixture.referee,
+  venue: item.fixture.venue.name,
+  city: item.fixture.venue.city,
+  status: item.fixture.status.short,
+  statusLong: item.fixture.status.long,
+  league: item.league.name,
+  round: item.league.round,
+  homeTeam: item.teams.home.name,
+  homeTeamId: item.teams.home.id,
+  homeTeamLogo: item.teams.home.logo,
+  awayTeam: item.teams.away.name,
+  awayTeamId: item.teams.away.id,
+  awayTeamLogo: item.teams.away.logo,
+  homeGoals: item.goals.home,
+  awayGoals: item.goals.away,
+  winner: item.teams.home.winner ? item.teams.home.name : item.teams.away.winner ? item.teams.away.name : null,
+}));
+
+export const FIXTURES_BY_SEASON_TEAM = API_FIXTURES_BY_SEASON_TEAM_RESPONSE.response.map((item) => ({
+  id: item.fixture.id,
+  date: item.fixture.date,
+  timestamp: item.fixture.timestamp,
+  referee: item.fixture.referee,
+  venue: item.fixture.venue.name,
+  city: item.fixture.venue.city,
+  status: item.fixture.status.short,
+  statusLong: item.fixture.status.long,
+  league: item.league.name,
+  round: item.league.round,
+  homeTeam: item.teams.home.name,
+  homeTeamId: item.teams.home.id,
+  homeTeamLogo: item.teams.home.logo,
+  awayTeam: item.teams.away.name,
+  awayTeamId: item.teams.away.id,
+  awayTeamLogo: item.teams.away.logo,
+  homeGoals: item.goals.home,
+  awayGoals: item.goals.away,
+  winner: item.teams.home.winner ? item.teams.home.name : item.teams.away.winner ? item.teams.away.name : null,
+}));
+
+export const FIXTURES_BY_SEASON_TEAM_LEAGUE = API_FIXTURES_BY_SEASON_TEAM_LEAGUE_RESPONSE.response.map((item) => ({
+  id: item.fixture.id,
+  date: item.fixture.date,
+  timestamp: item.fixture.timestamp,
+  referee: item.fixture.referee,
+  venue: item.fixture.venue.name,
+  city: item.fixture.venue.city,
+  status: item.fixture.status.short,
+  statusLong: item.fixture.status.long,
+  league: item.league.name,
+  round: item.league.round,
+  homeTeam: item.teams.home.name,
+  homeTeamId: item.teams.home.id,
+  homeTeamLogo: item.teams.home.logo,
+  awayTeam: item.teams.away.name,
+  awayTeamId: item.teams.away.id,
+  awayTeamLogo: item.teams.away.logo,
+  homeGoals: item.goals.home,
+  awayGoals: item.goals.away,
+  winner: item.teams.home.winner ? item.teams.home.name : item.teams.away.winner ? item.teams.away.name : null,
+}));
+

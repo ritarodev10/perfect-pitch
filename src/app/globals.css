@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #050505;
+  --foreground: #ffffff;
+  --accent: #e51616; /* AC Milan Red */
+  --card-bg: rgba(20, 20, 20, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Sidebar colors */
+  --sidebar-bg: #0f0f11;
+  --sidebar-border: rgba(255, 255, 255, 0.03);
+  --sidebar-active: #10b981; /* emerald-500 */
+  --sidebar-hover: rgba(255, 255, 255, 0.06);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ui), -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+  overflow-x: hidden;
+  background-image: radial-gradient(
+      circle at 50% 0%,
+      rgba(229, 22, 22, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 30%
+    );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* Typography utilities */
+.font-heading {
+  font-family: var(--font-heading), var(--font-ui), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-ui {
+  font-family: var(--font-ui), sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Typography scale for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), var(--font-ui), sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .glass-panel {
+    @apply bg-neutral-900/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400;
+  }
+
+  /* Iconify duotone icon styling - secondary color control */
+  /* Duotone icons use two paths - primary (first) and secondary (second) */
+  [data-icon] svg path:nth-child(2) {
+    fill: currentColor;
+    opacity: 0.6;
+  }
+
+  /* Active state - emerald theme */
+  .group:hover [data-icon] svg path:nth-child(2) {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes beam {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-12deg);
+  }
+}
+
+.animate-beam {
+  animation: beam 10s ease-in-out infinite;
+}
+
+.beam-gradient {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 60%,
+    transparent 100%
+  );
+}
+
+@keyframes beam-horizontal {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes beam-vertical {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes beam-diagonal {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) translateY(-100%);
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) translateY(100%);
+  }
+}
+
+.animate-beam-horizontal {
+  animation: beam-horizontal ease-in-out infinite;
+}
+
+.animate-beam-vertical {
+  animation: beam-vertical ease-in-out infinite;
+}
+
+.animate-beam-diagonal {
+  animation: beam-diagonal ease-in-out infinite;
 }
