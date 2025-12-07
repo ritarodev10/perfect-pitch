@@ -1,10 +1,11 @@
 /**
- * Utility function to get direct image URLs from api.sofascore.app
- * Using direct URLs since the API works when accessed directly
+ * Route images through our proxy to avoid host-level blocks
+ * that can occur on Vercel when the browser requests Sofascore
+ * assets directly. The proxy adds browser-like headers and
+ * keeps caching centralized.
  */
 export function getImageProxyUrl(imageUrl: string): string {
-  // Return direct URL - works in both dev and production
-  return imageUrl;
+  return `/api/image-proxy?url=${encodeURIComponent(imageUrl)}`;
 }
 
 /**
