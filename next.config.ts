@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "api.sofascore.app",
-        pathname: "/api/v1/**",
+        // Remove pathname restriction to allow all paths
       },
     ],
     // Disable optimization to avoid issues with external images

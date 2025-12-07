@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import type { SofaScoreTeamDetailResponse } from "@/data/sofascore";
 import { getTeamImageUrl } from "@/utils/imageProxy";
 
@@ -55,13 +54,10 @@ export const ClubIdentityHeader = ({ teamData }: ClubIdentityHeaderProps) => {
           className="relative group w-24 h-24 md:w-32 md:h-32"
         >
           <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl group-hover:bg-[var(--accent)]/20 transition-colors duration-500" />
-          <Image
+          <img
             src={getTeamImageUrl(team.id)}
             alt={team.fullName || team.name}
-            fill
-            className="object-contain drop-shadow-2xl relative z-10 transform group-hover:scale-105 transition-transform duration-500"
-            sizes="(max-width: 768px) 96px, 128px"
-            unoptimized
+            className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl z-10 transform group-hover:scale-105 transition-transform duration-500"
           />
         </motion.div>
 
