@@ -23,6 +23,9 @@ import {
 } from "@/app/dashboard/data";
 import { getH2H } from "@/data/sofascore";
 
+// Force dynamic rendering to avoid build-time API calls
+export const dynamic = 'force-dynamic';
+
 export default async function Dashboard() {
   // Fetch all team data from SofaScore API
   let teamData,
