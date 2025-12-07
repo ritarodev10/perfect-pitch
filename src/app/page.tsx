@@ -221,7 +221,6 @@ export default async function Dashboard() {
         <ClubIdentityHeader teamData={teamData} />
 
         {/* KPI Section */}
-        {/* @ts-expect-error - Type system migration in progress */}
         <QuickKPICards
           teamStats={teamStats}
           teamData={teamData}
@@ -235,7 +234,6 @@ export default async function Dashboard() {
             {/* Top Section: Recent Form + Charts - This height will be matched */}
             <div id="left-column-top-section" className="space-y-6">
               {/* Recent Form - Full width spanning both charts */}
-              {/* @ts-expect-error - Type system migration in progress */}
               <RecentFormStrip
                 lastMatches={lastMatches}
                 pregameForm={teamData.pregameForm}
@@ -246,7 +244,6 @@ export default async function Dashboard() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 {/* Standings Comparison Chart */}
                 <div className="flex">
-                  {/* @ts-expect-error - Type system migration in progress */}
                   <StandingsComparisonChart
                     currentSeasonStandings={standings}
                     historicalSeasons={historicalSeasons || []}
@@ -257,7 +254,6 @@ export default async function Dashboard() {
                 </div>
                 {/* Performance Radar Chart - Same height as StandingsComparisonChart */}
                 <div className="flex flex-1 min-w-0">
-                  {/* @ts-expect-error - Type system migration in progress */}
                   <PerformanceRadarChart teamStats={teamStats} />
                 </div>
               </div>
@@ -277,7 +273,6 @@ export default async function Dashboard() {
               targetId="upcoming-match-card"
               referenceId="left-column-top-section"
             >
-              {/* @ts-expect-error - Type system migration in progress */}
               <div id="upcoming-match-card" className="h-full">
                 <UpcomingMatchCard
                   nextMatches={nextMatches?.events}

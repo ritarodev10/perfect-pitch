@@ -78,7 +78,7 @@ type DnaMetricKey =
   | "shotsOnTargetAgainst"
   | "penPenaltyGoalsConceded";
 
-type DnaModeId =
+export type DnaModeId =
   | "attacking"
   | "possession"
   | "defensive"

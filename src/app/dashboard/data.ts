@@ -17,10 +17,10 @@ import {
   getTeamStatisticsSeasons as fetchTeamStatisticsSeasons,
   getPlayerStatisticsSeasons as fetchPlayerStatisticsSeasons,
   getTeamSquad as fetchTeamSquad,
+  type SofaScoreTeamDetailResponse,
+  type SofaScoreTeamStatisticsResponse,
+  type SofaScoreMatchesResponse,
 } from "@/data/sofascore";
-import type { GetTeamDetailResponse } from "@/types/sofascore/teams/get-team-detail";
-import type { GetTeamNextMatchesResponse } from "@/types/sofascore/teams/get-team-next-matches";
-import type { GetTeamLastMatchesResponse } from "@/types/sofascore/teams/get-team-last-matches";
 import type { GetTeamStatisticsResponse } from "@/types/sofascore/teams/get-team-statistics";
 import type { GetTeamPlayerStatisticsResponse } from "@/types/sofascore/teams/get-team-player-statistics";
 import type { GetTeamTransfersResponse } from "@/types/sofascore/teams/get-team-transfers";
@@ -42,11 +42,10 @@ function getDefaultTeamId(): number {
  */
 export async function getTeamDetail(metadata?: {
   components?: string[];
-}): Promise<GetTeamDetailResponse> {
+}): Promise<SofaScoreTeamDetailResponse> {
   const teamId = getDefaultTeamId();
   const response = await fetchTeamDetail(teamId, metadata);
-  // Map the response to the proper type structure
-  return response as unknown as GetTeamDetailResponse;
+  return response;
 }
 
 /**
@@ -55,10 +54,10 @@ export async function getTeamDetail(metadata?: {
 export async function getNextMatches(
   teamId?: number,
   metadata?: { components?: string[] }
-): Promise<GetTeamNextMatchesResponse> {
+): Promise<SofaScoreMatchesResponse> {
   const targetTeamId = teamId ?? getDefaultTeamId();
   const response = await fetchNextMatches(targetTeamId, metadata);
-  return response as unknown as GetTeamNextMatchesResponse;
+  return response;
 }
 
 /**
@@ -67,10 +66,10 @@ export async function getNextMatches(
 export async function getLastMatches(
   teamId?: number,
   metadata?: { components?: string[] }
-): Promise<GetTeamLastMatchesResponse> {
+): Promise<SofaScoreMatchesResponse> {
   const targetTeamId = teamId ?? getDefaultTeamId();
   const response = await fetchLastMatches(targetTeamId, metadata);
-  return response as unknown as GetTeamLastMatchesResponse;
+  return response;
 }
 
 /**
@@ -81,7 +80,7 @@ export async function getTeamStatistics(
   tournamentId?: number,
   seasonId?: number,
   metadata?: { components?: string[] }
-): Promise<GetTeamStatisticsResponse> {
+): Promise<SofaScoreTeamStatisticsResponse> {
   const targetTeamId = teamId ?? getDefaultTeamId();
   const response = await fetchTeamStatistics(
     targetTeamId,
@@ -89,7 +88,7 @@ export async function getTeamStatistics(
     seasonId,
     metadata
   );
-  return response as unknown as GetTeamStatisticsResponse;
+  return response;
 }
 
 /**
