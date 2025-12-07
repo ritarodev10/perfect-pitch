@@ -445,27 +445,8 @@ export const UpcomingMatchCard = ({
       <div className="absolute -right-20 -top-20 w-64 h-64 bg-[var(--accent)]/10 rounded-full blur-[80px] group-hover:bg-[var(--accent)]/20 transition-colors duration-500" />
 
       <div className="relative z-10 flex flex-col h-full justify-between">
-        {/* Top Section: Subtle tournament info and navigation */}
+        {/* Top Section: Navigation and tournament info */}
         <div className="flex flex-col gap-3 mb-6">
-          {/* Tournament and Round - Container with design */}
-          {tournamentName && (
-            <div className="flex items-center justify-center">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="text-[11px] font-semibold text-white/90 tracking-wide">
-                  {tournamentName}
-                </span>
-                {roundDisplay && (
-                  <>
-                    <div className="h-3 w-px bg-white/20" />
-                    <span className="text-[11px] font-medium text-white/70 tracking-wide">
-                      {roundDisplay}
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
-          )}
-
           {/* Navigation and Match Type - Integrated header */}
           <div className="flex items-center justify-between">
             <button
@@ -498,6 +479,25 @@ export const UpcomingMatchCard = ({
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
+
+          {/* Tournament and Round - Container with design */}
+          {tournamentName && (
+            <div className="flex items-center justify-center">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <span className="text-[11px] font-semibold text-white/90 tracking-wide">
+                  {tournamentName}
+                </span>
+                {roundDisplay && (
+                  <>
+                    <div className="h-3 w-px bg-white/20" />
+                    <span className="text-[11px] font-medium text-white/70 tracking-wide">
+                      {roundDisplay}
+                    </span>
+                  </>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Main Match Content - Hero Section */}
