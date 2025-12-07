@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import type { GetTeamTransfersResponse } from "@/types/sofascore/teams/get-team-transfers";
+import { getPlayerImageUrl } from "@/utils/imageProxy";
 
 interface TransfersSnapshotProps {
   transfers?: GetTeamTransfersResponse | null;
@@ -75,7 +76,7 @@ export const TransfersSnapshot = ({ transfers }: TransfersSnapshotProps) => {
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10 overflow-hidden">
                       {transfer.player.id && !imageError ? (
                         <img
-                          src={`https://api.sofascore.app/api/v1/player/${transfer.player.id}/image`}
+                          src={getPlayerImageUrl(transfer.player.id)}
                           alt={transfer.player.name}
                           className="w-full h-full object-cover"
                           onError={() => setImageError(true)}
@@ -140,7 +141,7 @@ export const TransfersSnapshot = ({ transfers }: TransfersSnapshotProps) => {
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10 overflow-hidden">
                       {transfer.player.id && !imageError ? (
                         <img
-                          src={`https://api.sofascore.app/api/v1/player/${transfer.player.id}/image`}
+                          src={getPlayerImageUrl(transfer.player.id)}
                           alt={transfer.player.name}
                           className="w-full h-full object-cover"
                           onError={() => setImageError(true)}

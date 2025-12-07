@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import type { GetTeamPlayerStatisticsResponse } from "@/types/sofascore/teams/get-team-player-statistics";
 import type { TopPlayerEntry } from "@/types/sofascore/teams/get-team-player-statistics";
+import { getPlayerImageUrl } from "@/utils/imageProxy";
 
 interface PlayerLeadersProps {
   playerStats?: GetTeamPlayerStatisticsResponse | null;
@@ -65,7 +66,7 @@ const PlayerCard = ({
       <div className="shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/10 overflow-hidden">
         {player?.player.id && !imageError ? (
           <img
-            src={`https://api.sofascore.app/api/v1/player/${player.player.id}/image`}
+            src={getPlayerImageUrl(player.player.id)}
             alt={player.player.name}
             className="w-full h-full object-cover"
             onError={() => setImageError(true)}
@@ -133,7 +134,7 @@ const RatingPlayerCard = ({
       <div className="shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10 overflow-hidden">
         {player?.player.id && !imageError ? (
           <img
-            src={`https://api.sofascore.app/api/v1/player/${player.player.id}/image`}
+            src={getPlayerImageUrl(player.player.id)}
             alt={player.player.name}
             className="w-full h-full object-cover"
             onError={() => setImageError(true)}

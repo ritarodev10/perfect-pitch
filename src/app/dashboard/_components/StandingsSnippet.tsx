@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import type { GetStandingsResponse } from "@/types/sofascore/tournaments/get-standings";
+import { getTeamImageUrl } from "@/utils/imageProxy";
 
 interface StandingsSnippetProps {
   standings?: GetStandingsResponse | null;
@@ -104,7 +105,7 @@ export const StandingsSnippet = ({
                     <div className="flex items-center gap-2">
                       <div className="shrink-0 w-6 h-6">
                         <Image
-                          src={`https://api.sofascore.app/api/v1/team/${row.team.id}/image`}
+                          src={getTeamImageUrl(row.team.id)}
                           alt={row.team.name}
                           width={20}
                           height={20}

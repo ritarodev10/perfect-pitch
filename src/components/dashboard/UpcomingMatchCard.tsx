@@ -10,6 +10,7 @@ import type {
 import type { GetH2HResponse } from "@/types/sofascore/matches/get-h2h";
 import type { GetMatchDetailResponse } from "@/types/sofascore/matches/get-match-detail";
 import type { GetMatchIncidentsResponse } from "@/types/sofascore/matches/get-match-incidents";
+import { getTeamImageUrl } from "@/utils/imageProxy";
 
 interface UpcomingMatchCardProps {
   nextMatches?: SofaScoreEvent[];
@@ -515,9 +516,7 @@ export const UpcomingMatchCard = ({
               <div className="relative">
                 <div className="absolute inset-0 bg-white/10 rounded-full blur-xl" />
                 <img
-                  src={`https://api.sofascore.app/api/v1/team/${
-                    isHome ? team.id : opponent.id
-                  }/image`}
+                  src={getTeamImageUrl(isHome ? team.id : opponent.id)}
                   alt={isHome ? team.name : opponent.name}
                   className={`w-24 h-24 object-contain drop-shadow-2xl relative z-10 ${
                     !isHome
@@ -619,9 +618,7 @@ export const UpcomingMatchCard = ({
               <div className="relative">
                 <div className="absolute inset-0 bg-white/5 rounded-full blur-xl" />
                 <img
-                  src={`https://api.sofascore.app/api/v1/team/${
-                    isHome ? opponent.id : team.id
-                  }/image`}
+                  src={getTeamImageUrl(isHome ? opponent.id : team.id)}
                   alt={isHome ? opponent.name : team.name}
                   className={`w-24 h-24 object-contain drop-shadow-2xl relative z-10 ${
                     isHome

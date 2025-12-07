@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import type { GetTeamPlayerStatisticsResponse } from "@/types/sofascore/teams/get-team-player-statistics";
 import type { GetTeamSquadResponse } from "@/types/sofascore/teams/get-team-squad";
+import { getPlayerImageUrl } from "@/utils/imageProxy";
 
 interface SquadSnapshotProps {
   playerStats?: GetTeamPlayerStatisticsResponse | null;
@@ -206,7 +207,7 @@ export const SquadSnapshot = ({ playerStats, squad }: SquadSnapshotProps) => {
               {/* Image */}
               <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 ease-out">
                 <img
-                  src={`https://api.sofascore.app/api/v1/player/${player.id}/image`}
+                  src={getPlayerImageUrl(player.id)}
                   alt={player.name}
                   className="w-full h-full object-cover object-top opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-out"
                   onError={(e) => {

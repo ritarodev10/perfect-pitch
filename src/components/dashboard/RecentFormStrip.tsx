@@ -8,6 +8,7 @@ import type {
   SofaScoreMatchesResponse,
   SofaScorePregameForm,
 } from "@/data/sofascore";
+import { getTeamImageUrl } from "@/utils/imageProxy";
 
 interface RecentFormStripProps {
   lastMatches?: SofaScoreMatchesResponse | null;
@@ -88,7 +89,7 @@ export const RecentFormStrip = ({
       result,
       opponent: opponent.shortName || opponent.name,
       opponentId: opponent.id,
-      opponentLogo: `https://api.sofascore.app/api/v1/team/${opponent.id}/image`,
+      opponentLogo: getTeamImageUrl(opponent.id),
       score: `${homeScore} - ${awayScore}`,
       homeScore,
       awayScore,
