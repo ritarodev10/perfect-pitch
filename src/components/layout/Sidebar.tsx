@@ -7,7 +7,7 @@ import { Icon } from "@iconify/react";
 import clsx from "clsx";
 import Image from "next/image";
 import { PitchPerfectLogo } from "@/components/general/PitchPerfectLogo";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 
 const MENU_ITEMS = [
   { label: "Dashboard", icon: "solar:widget-5-bold-duotone", href: "/" },
@@ -50,44 +50,81 @@ export const Sidebar = ({
   onMobileClose?: () => void;
 }) => {
   const pathname = usePathname();
-  const [isMobile, setIsMobile] = useState(() => {
-    // Initialize based on window size if available (client-side)
-    if (typeof window !== "undefined") {
-      return window.innerWidth < 1024;
-    }
-    // Default to mobile for SSR
-    return true;
-  });
+  const [isMobile, setIsMobile] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+  const previousPathnameRef = useRef<string | null>(null);
 
-  // Detect if we're on mobile
+  // Track if component is mounted (client-side only)
   useEffect(() => {
-    const checkMobile = () => {
+    setIsMounted(true);
+    // Set initial mobile state
+    if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 1024);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    }
   }, []);
 
-  // Close mobile menu when route changes
+  // Detect screen size changes (debounced to prevent glitching)
   useEffect(() => {
-    if (isMobileOpen && onMobileClose) {
+    if (!isMounted) return;
+
+    let timeoutId: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsMobile(window.innerWidth < 1024);
+        // Close mobile menu if switching to desktop
+        if (window.innerWidth >= 1024 && isMobileOpen && onMobileClose) {
+          onMobileClose();
+        }
+      }, 150);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isMounted, isMobileOpen, onMobileClose, isMobile]);
+
+  // Close mobile menu when route changes (only if pathname actually changed)
+  useEffect(() => {
+    // Only close if pathname actually changed (not on initial mount)
+    if (
+      previousPathnameRef.current !== null &&
+      previousPathnameRef.current !== pathname &&
+      isMobileOpen &&
+      onMobileClose
+    ) {
       onMobileClose();
     }
+
+    // Update previous pathname
+    previousPathnameRef.current = pathname;
   }, [pathname, isMobileOpen, onMobileClose]);
 
-  // Calculate x position: on mobile, hide when closed; on desktop, always visible
-  const xPosition = isMobile ? (isMobileOpen ? 0 : -280) : 0;
-
-  // Calculate width: on mobile always full width, on desktop respect collapsed state
-  const sidebarWidth = isMobile ? 280 : isCollapsed ? 80 : 280;
+  // Calculate animation values based on mobile/desktop - memoized to prevent glitching
+  const animationValues = useMemo(() => {
+    // If isMobileOpen is undefined, we're on desktop (no mobile menu state)
+    if (isMobile && isMobileOpen !== undefined) {
+      // Mobile: animate x position, fixed width
+      return {
+        x: isMobileOpen ? 0 : -280,
+        width: 280,
+      };
+    } else {
+      // Desktop: animate width, fixed x position
+      return {
+        x: 0,
+        width: isCollapsed ? 80 : 280,
+      };
+    }
+  }, [isMobile, isMobileOpen, isCollapsed]);
 
   return (
     <>
-      {/* Mobile Backdrop */}
+      {/* Mobile Backdrop - Only show on mobile */}
       <AnimatePresence>
-        {isMobileOpen && (
+        {isMobile && isMobileOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -101,21 +138,24 @@ export const Sidebar = ({
 
       <motion.aside
         initial={false}
-        animate={{
-          width: sidebarWidth,
-          x: xPosition,
+        animate={animationValues}
+        transition={{
+          duration: 0.4,
+          ease: [0.16, 1, 0.3, 1],
+          type: "tween",
         }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className={clsx(
-          "fixed left-0 top-0 bottom-0 z-50 flex flex-col bg-[#0F0F11] border-r border-white/[0.03] overflow-visible"
+          "fixed left-0 top-0 bottom-0 z-50 flex flex-col bg-[#0F0F11] border-r border-white/[0.03] overflow-visible",
+          // On desktop, ensure it's always visible
+          "lg:translate-x-0"
         )}
         style={{
           boxShadow:
             "inset -1px 0 0 rgba(255, 255, 255, 0.02), 4px 0 24px rgba(0, 0, 0, 0.4)",
         }}
       >
-        {/* Mobile Close Button */}
-        {isMobileOpen && onMobileClose && (
+        {/* Mobile Close Button - Only show on mobile */}
+        {isMobile && isMobileOpen && onMobileClose && (
           <motion.button
             onClick={onMobileClose}
             whileHover={{ scale: 1.1 }}
@@ -261,7 +301,7 @@ export const Sidebar = ({
                   </div>
 
                   {/* Label - Always show on mobile, conditionally on desktop */}
-                  {(!isCollapsed || isMobileOpen) && (
+                  {(isMobile || !isCollapsed || isMobileOpen) && (
                     <motion.span
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -293,7 +333,7 @@ export const Sidebar = ({
         {/* User Profile Section */}
         <div className="border-t border-white/[0.04] p-4">
           <AnimatePresence mode="wait">
-            {!isCollapsed || isMobileOpen ? (
+            {isMobile || !isCollapsed || isMobileOpen ? (
               <motion.div
                 key="expanded"
                 initial={{ opacity: 0, y: 10 }}
