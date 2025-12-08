@@ -441,15 +441,15 @@ export const UpcomingMatchCard = ({
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="relative h-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl glass-panel overflow-hidden group flex flex-col"
+      className="relative h-auto sm:h-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl glass-panel overflow-hidden group flex flex-col"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" />
       <div className="absolute -right-20 -top-20 w-64 h-64 bg-[var(--accent)]/10 rounded-full blur-[80px] group-hover:bg-[var(--accent)]/20 transition-colors duration-500" />
 
-      <div className="relative z-10 flex flex-col h-full justify-between">
+      <div className="relative z-10 flex flex-col h-full sm:justify-between gap-2 sm:gap-0">
         {/* Top Section: Navigation and tournament info */}
-        <div className="flex flex-col gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
+        <div className="flex flex-col gap-1.5 sm:gap-3 mb-2 sm:mb-4 md:mb-6">
           {/* Navigation and Match Type - Integrated header */}
           <div className="flex items-center justify-between">
             <button
@@ -515,7 +515,7 @@ export const UpcomingMatchCard = ({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 w-full flex-1 py-3 sm:py-4 md:py-6"
+            className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 w-full sm:flex-1 py-2 sm:py-4 md:py-6"
           >
             {/* Left side: Team if home, Opponent if away */}
             <div className="flex flex-col items-center gap-1.5 sm:gap-2 md:gap-3 flex-1">
@@ -647,7 +647,7 @@ export const UpcomingMatchCard = ({
         </AnimatePresence>
 
         {/* Bottom Section: Match Details */}
-        <div className="w-full border-t border-white/5 pt-3 sm:pt-4 md:pt-5 space-y-2 sm:space-y-3">
+        <div className="w-full border-t border-white/5 pt-2 sm:pt-4 md:pt-5 space-y-1.5 sm:space-y-3">
           <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5">
             <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-neutral-500" />
             <span className="text-[10px] sm:text-xs font-semibold text-neutral-300 tracking-wide">

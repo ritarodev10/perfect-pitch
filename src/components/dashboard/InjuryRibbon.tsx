@@ -22,7 +22,8 @@ export const InjuryRibbon = () => {
           <div className="px-2 sm:px-4 md:px-6 py-2 sm:py-0 flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-[var(--accent)] font-black uppercase text-[8px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.2em] z-10 bg-black h-full absolute left-0 border-r border-[var(--accent)]/20 shadow-[10px_0_20px_rgba(0,0,0,0.8)]">
             <AlertCircle className="w-3 h-3 sm:w-4 sm:h-4" />
             <span className="text-center leading-tight sm:leading-normal">
-              Medical<br className="sm:hidden" /> Report
+              Medical
+              <br className="sm:hidden" /> Report
             </span>
           </div>
 
@@ -33,7 +34,10 @@ export const InjuryRibbon = () => {
           >
             {[...injuries, ...injuries, ...injuries, ...injuries].map(
               (injury, index) => (
-                <div key={index} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
+                <div
+                  key={index}
+                  className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm"
+                >
                   <span className="font-bold text-white tracking-wide">
                     {injury.player}
                   </span>
