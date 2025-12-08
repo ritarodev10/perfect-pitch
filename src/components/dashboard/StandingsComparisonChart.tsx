@@ -264,7 +264,7 @@ export const StandingsComparisonChart = ({
         initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="h-[280px] w-full p-4 sm:p-6 md:p-8 rounded-2xl glass-panel relative overflow-hidden"
+        className="h-[280px] w-full p-6 md:p-8 rounded-2xl glass-panel relative overflow-hidden"
       >
         <div className="flex items-center justify-center h-full">
           <p className="text-sm text-neutral-500">
@@ -285,7 +285,7 @@ export const StandingsComparisonChart = ({
       initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ delay: 0.4, duration: 0.6 }}
-      className="w-full h-full p-4 sm:p-6 md:p-8 rounded-2xl glass-panel relative overflow-hidden flex flex-col"
+      className="w-full h-full p-6 md:p-8 rounded-2xl glass-panel relative overflow-hidden flex flex-col"
     >
       <div className="flex flex-wrap justify-between items-center gap-3 mb-6 sm:mb-8 relative z-10 flex-shrink-0">
         <h3 className="text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em]">

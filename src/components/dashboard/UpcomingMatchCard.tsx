@@ -442,7 +442,7 @@ export const UpcomingMatchCard = ({
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="relative h-auto sm:h-full p-3 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl glass-panel overflow-hidden group flex flex-col"
+      className="relative h-auto sm:h-full p-6 rounded-xl sm:rounded-2xl glass-panel overflow-hidden group flex flex-col"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" />

@@ -163,7 +163,7 @@ export const RecentFormStrip = ({
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ delay: 0.3, duration: 0.6 }}
-      className="flex flex-wrap items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl glass-panel w-full"
+      className="flex flex-wrap items-center gap-4 sm:gap-6 p-6 rounded-2xl glass-panel w-full"
     >
       <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em] whitespace-nowrap">
         Recent Form

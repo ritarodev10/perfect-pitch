@@ -138,7 +138,7 @@ export const PerformanceRadarChart = ({
         initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        className="relative h-full w-full p-8 rounded-2xl glass-panel overflow-hidden flex flex-col items-center justify-center"
+        className="relative h-full w-full p-6 md:p-8 rounded-2xl glass-panel overflow-hidden flex flex-col items-center justify-center"
       >
         <div className="text-neutral-500 text-sm">No data available</div>
       </motion.div>
@@ -150,7 +150,7 @@ export const PerformanceRadarChart = ({
       initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ delay: 0.5, duration: 0.6 }}
-      className="relative h-full w-full p-8 rounded-2xl glass-panel overflow-hidden flex flex-col items-center justify-center flex-1 min-w-0"
+      className="relative h-full w-full p-6 md:p-8 rounded-2xl glass-panel overflow-hidden flex flex-col items-center justify-center flex-1 min-w-0"
     >
       <div className="flex justify-between mb-6 sm:mb-8 relative z-10 w-full">
         <div className="flex flex-col justify-start">
