@@ -6,15 +6,18 @@ interface MatchHeightsWrapperProps {
   children: React.ReactNode;
   targetId: string;
   referenceId: string;
+  minWidth?: number; // Minimum viewport width to apply height matching (default: 1024 = lg breakpoint)
 }
 
 /**
  * Client component wrapper to match heights between two elements
+ * Only applies on screens wider than minWidth (default lg breakpoint)
  */
 export function MatchHeightsWrapper({
   children,
   targetId,
   referenceId,
+  minWidth = 1024, // Tailwind lg breakpoint
 }: MatchHeightsWrapperProps) {
   useEffect(() => {
     const matchHeights = () => {
@@ -22,8 +25,14 @@ export function MatchHeightsWrapper({
       const reference = document.getElementById(referenceId);
 
       if (target && reference) {
-        const referenceHeight = reference.offsetHeight;
-        target.style.height = `${referenceHeight}px`;
+        // Only match heights on larger screens where columns are side by side
+        if (window.innerWidth >= minWidth) {
+          const referenceHeight = reference.offsetHeight;
+          target.style.height = `${referenceHeight}px`;
+        } else {
+          // Reset to auto height on smaller screens
+          target.style.height = "auto";
+        }
       }
     };
 
@@ -52,7 +61,7 @@ export function MatchHeightsWrapper({
       resizeObserver.disconnect();
       window.removeEventListener("resize", matchHeights);
     };
-  }, [targetId, referenceId]);
+  }, [targetId, referenceId, minWidth]);
 
   return <>{children}</>;
 }
