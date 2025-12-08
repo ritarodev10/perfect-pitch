@@ -152,43 +152,45 @@ export const PerformanceRadarChart = ({
       transition={{ delay: 0.5, duration: 0.6 }}
       className="relative h-full w-full p-8 rounded-2xl glass-panel overflow-hidden flex flex-col items-center justify-center flex-1 min-w-0"
     >
-      <div className="absolute top-8 left-8 z-10 flex items-center gap-3">
-        <h3 className="text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em]">
-          Performance DNA
-        </h3>
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={currentMode.id}
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 5 }}
-            transition={{ duration: 0.3 }}
-            className="text-[10px] font-medium text-neutral-400"
-          >
-            {currentMode.label}
-          </motion.span>
-        </AnimatePresence>
-      </div>
+      <div className="flex justify-between mb-6 sm:mb-8 relative z-10 w-full">
+        <div className="flex flex-col justify-start">
+          <h3 className="text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em]">
+            Performance
+          </h3>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={currentMode.id}
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 5 }}
+              transition={{ duration: 0.3 }}
+              className="text-[10px] font-medium text-neutral-400"
+            >
+              {currentMode.label}
+            </motion.span>
+          </AnimatePresence>
+        </div>
 
-      {/* Mode selector dots */}
-      <div
-        className="absolute top-8 right-8 z-10 flex items-center gap-2"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {PERFORMANCE_DNA_MODES.map((mode, index) => (
-          <button
-            key={mode.id}
-            onClick={() => handleModeSelect(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentModeIndex
-                ? "bg-[var(--accent)] w-6"
-                : "bg-neutral-600 hover:bg-neutral-500"
-            }`}
-            aria-label={`Switch to ${mode.label}`}
-            title={mode.label}
-          />
-        ))}
+        {/* Mode selector dots */}
+        <div
+          className="flex justify-end gap-2 mt-1"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {PERFORMANCE_DNA_MODES.map((mode, index) => (
+            <button
+              key={mode.id}
+              onClick={() => handleModeSelect(index)}
+              className={`w-1 h-1 md:w-2 md:h-2 rounded-full transition-all duration-300 ${
+                index === currentModeIndex
+                  ? "bg-[var(--accent)] w-4 md:w-6"
+                  : "bg-neutral-600 hover:bg-neutral-500"
+              }`}
+              aria-label={`Switch to ${mode.label}`}
+              title={mode.label}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Ambient Glow */}
