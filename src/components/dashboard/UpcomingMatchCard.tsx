@@ -442,7 +442,7 @@ export const UpcomingMatchCard = ({
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="relative h-auto sm:h-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl glass-panel group flex flex-col"
+      className="relative h-auto sm:h-full p-3 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl glass-panel overflow-hidden group flex flex-col"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -516,7 +516,7 @@ export const UpcomingMatchCard = ({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 w-full sm:flex-1 py-2 sm:py-4 md:py-6"
+            className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 w-full sm:flex-1 py-1 sm:py-4 md:py-6"
           >
             {/* Left side: Team if home, Opponent if away */}
             <div className="flex flex-col items-center gap-1.5 sm:gap-2 md:gap-3 flex-1">
@@ -640,7 +640,7 @@ export const UpcomingMatchCard = ({
         </AnimatePresence>
 
         {/* Bottom Section: Match Details */}
-        <div className="w-full border-t border-white/5 pt-2 sm:pt-4 md:pt-5 space-y-1.5 sm:space-y-3">
+        <div className="w-full border-t border-white/5 pt-1.5 sm:pt-4 md:pt-5 space-y-1 sm:space-y-3">
           <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5">
             <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-neutral-500" />
             <span className="text-[10px] sm:text-xs font-semibold text-neutral-300 tracking-wide">
@@ -862,54 +862,54 @@ export const UpcomingMatchCard = ({
           )}
           {!isPastMatch ? (
             <div
-              className={`mt-3 sm:mt-4 md:mt-5 pt-3 sm:pt-4 md:pt-5 border-t border-white/5 transition-all duration-300 ${
+              className={`mt-1.5 sm:mt-4 md:mt-5 pt-1.5 sm:pt-4 md:pt-5 border-t border-white/5 transition-all duration-300 ${
                 isLoadingH2H ? "blur-sm opacity-60" : "blur-0 opacity-100"
               }`}
             >
               {h2hData?.teamDuel ? (
                 <>
-                  <div className="text-[9px] sm:text-[10px] font-semibold text-neutral-500 uppercase tracking-wider text-center mb-2 sm:mb-3">
+                  <div className="text-[8px] sm:text-[10px] font-semibold text-neutral-500 uppercase tracking-wider text-center mb-1 sm:mb-3">
                     Head-to-Head
                   </div>
-                  <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5">
-                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
-                      <span className="text-base sm:text-lg font-bold text-green-400">
+                  <div className="flex items-center justify-center gap-2.5 sm:gap-4 md:gap-5">
+                    <div className="flex flex-col items-center gap-0">
+                      <span className="text-sm sm:text-lg font-bold text-green-400">
                         {isHome
                           ? h2hData.teamDuel.homeWins
                           : h2hData.teamDuel.awayWins}
                       </span>
-                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[8px] sm:text-[10px] text-neutral-500 font-medium">
                         W
                       </span>
                     </div>
-                    <div className="h-6 sm:h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
-                      <span className="text-base sm:text-lg font-bold text-neutral-400">
+                    <div className="h-5 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0">
+                      <span className="text-sm sm:text-lg font-bold text-neutral-400">
                         {h2hData.teamDuel.draws}
                       </span>
-                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[8px] sm:text-[10px] text-neutral-500 font-medium">
                         D
                       </span>
                     </div>
-                    <div className="h-6 sm:h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
-                      <span className="text-base sm:text-lg font-bold text-red-400">
+                    <div className="h-5 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0">
+                      <span className="text-sm sm:text-lg font-bold text-red-400">
                         {isHome
                           ? h2hData.teamDuel.awayWins
                           : h2hData.teamDuel.homeWins}
                       </span>
-                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[8px] sm:text-[10px] text-neutral-500 font-medium">
                         L
                       </span>
                     </div>
-                    <div className="h-6 sm:h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
-                      <span className="text-base sm:text-lg font-bold text-neutral-300">
+                    <div className="h-5 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0">
+                      <span className="text-sm sm:text-lg font-bold text-neutral-300">
                         {h2hData.teamDuel.homeWins +
                           h2hData.teamDuel.awayWins +
                           h2hData.teamDuel.draws}
                       </span>
-                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[8px] sm:text-[10px] text-neutral-500 font-medium">
                         Total
                       </span>
                     </div>
@@ -965,7 +965,7 @@ export const UpcomingMatchCard = ({
           {/* All Fixtures Link */}
           <Link
             href="/fixtures"
-            className="mt-3 sm:mt-4 flex items-center justify-center gap-2 py-2 sm:py-2.5 px-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 group"
+            className="mt-2 sm:mt-4 flex items-center justify-center gap-2 py-1.5 sm:py-2.5 px-3 sm:px-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 group"
           >
             <span className="text-[10px] sm:text-xs font-semibold text-neutral-400 uppercase tracking-wider group-hover:text-white transition-colors">
               All Fixtures
