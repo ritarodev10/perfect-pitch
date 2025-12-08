@@ -291,9 +291,7 @@ export default async function Dashboard() {
       </div>
 
       {/* Footer / Ticker */}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        <InjuryRibbon />
-      </div>
+      <InjuryRibbon />
 
       {/* Bottom padding for fixed footer */}
       <div className="h-12" />

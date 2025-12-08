@@ -163,12 +163,12 @@ export const RecentFormStrip = ({
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ delay: 0.3, duration: 0.6 }}
-      className="flex items-center gap-6 p-6 rounded-2xl glass-panel w-full"
+      className="flex flex-wrap items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl glass-panel w-full"
     >
       <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em] whitespace-nowrap">
         Recent Form
       </span>
-      <div className="flex gap-3 flex-1">
+      <div className="flex gap-1.5 sm:gap-2 md:gap-3">
         {matchData.length === 0 && form.length === 0 ? (
           <span className="text-xs text-neutral-500">No recent form data</span>
         ) : hasMatchData ? (
@@ -186,7 +186,7 @@ export const RecentFormStrip = ({
               >
                 <div
                   className={clsx(
-                    "w-12 h-12 flex items-center justify-center rounded-full text-sm font-black text-black shadow-lg transition-all duration-300",
+                    "w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full text-[10px] sm:text-xs md:text-sm font-black text-black shadow-lg transition-all duration-300",
                     getColor(result),
                     isActive && "ring-2 ring-white scale-110"
                   )}
@@ -219,7 +219,7 @@ export const RecentFormStrip = ({
               >
                 <div
                   className={clsx(
-                    "w-12 h-12 flex items-center justify-center rounded-full text-sm font-black text-black shadow-lg transition-all duration-300",
+                    "w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full text-[10px] sm:text-xs md:text-sm font-black text-black shadow-lg transition-all duration-300",
                     getColor(result),
                     isActive && "ring-2 ring-white/50 scale-110"
                   )}
@@ -250,16 +250,16 @@ export const RecentFormStrip = ({
             animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 0.4 }}
-            className="flex items-center gap-3 min-w-[220px]"
+            className="flex items-center gap-3 w-full sm:w-auto sm:min-w-[220px]"
           >
-            <div className="relative w-12 h-12 shrink-0">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
               <div className="absolute inset-0 bg-white/5 rounded-full blur-sm" />
               <Image
                 src={currentMatch.opponentLogo}
                 alt={currentMatch.opponent}
                 fill
                 className="object-contain relative z-10"
-                sizes="48px"
+                sizes="(max-width: 640px) 40px, 48px"
                 unoptimized
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";

@@ -264,7 +264,7 @@ export const StandingsComparisonChart = ({
         initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="h-[280px] w-full p-8 rounded-2xl glass-panel relative overflow-hidden"
+        className="h-[280px] w-full p-4 sm:p-6 md:p-8 rounded-2xl glass-panel relative overflow-hidden"
       >
         <div className="flex items-center justify-center h-full">
           <p className="text-sm text-neutral-500">
@@ -285,13 +285,13 @@ export const StandingsComparisonChart = ({
       initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ delay: 0.4, duration: 0.6 }}
-      className="w-full h-full p-8 rounded-2xl glass-panel relative overflow-hidden flex flex-col"
+      className="w-full h-full p-4 sm:p-6 md:p-8 rounded-2xl glass-panel relative overflow-hidden flex flex-col"
     >
-      <div className="flex justify-between items-center mb-8 relative z-10 flex-shrink-0">
+      <div className="flex flex-wrap justify-between items-center gap-3 mb-6 sm:mb-8 relative z-10 flex-shrink-0">
         <h3 className="text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em]">
           Position Comparison
         </h3>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {selectedSeason ? (
             <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
               vs {selectedSeason.seasonName}
@@ -302,10 +302,10 @@ export const StandingsComparisonChart = ({
             </span>
           ) : null}
           {validHistoricalSeasons.length > 1 && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <button
                 onClick={handlePrevious}
-                className="w-6 h-6 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                 aria-label="Previous season"
               >
                 <svg
@@ -326,7 +326,7 @@ export const StandingsComparisonChart = ({
               </button>
               <button
                 onClick={handleNext}
-                className="w-6 h-6 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                 aria-label="Next season"
               >
                 <svg

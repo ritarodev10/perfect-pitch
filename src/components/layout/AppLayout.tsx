@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Sidebar } from "./Sidebar";
-import { GridBeam } from "./GridBeam";
+import { AnimatedBackground } from "./AnimatedBackground";
+import { SidebarContext } from "./SidebarContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import clsx from "clsx";
@@ -27,63 +28,73 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const paddingLeft = isDesktop ? (isCollapsed ? 80 : 280) : 0;
 
   return (
-    <div className="flex min-h-screen bg-black text-white overflow-hidden">
-      <Sidebar
-        isCollapsed={isCollapsed}
-        setIsCollapsed={setIsCollapsed}
-        isMobileOpen={isMobileOpen}
-        onMobileClose={() => setIsMobileOpen(false)}
-      />
+    <SidebarContext.Provider value={{ paddingLeft, isCollapsed, isDesktop }}>
+      <div className="flex min-h-screen bg-black text-white overflow-hidden relative">
+        {/* Animated Background - follows sidebar width */}
+        <motion.div
+          className="fixed top-0 right-0 bottom-0 z-0"
+          animate={{ left: paddingLeft }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <AnimatedBackground variant="parallax-grid" enabled={true} />
+        </motion.div>
 
-      {/* Mobile Menu Button - Only show when menu is closed */}
-      <AnimatePresence>
-        {!isMobileOpen && (
-          <motion.button
-            onClick={() => setIsMobileOpen(true)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className={clsx(
-              "fixed top-4 left-4 z-[60]",
-              "w-10 h-10 flex items-center justify-center",
-              "bg-[#0F0F11] border-2 border-white/[0.08] rounded-lg",
-              "text-neutral-400 hover:text-emerald-400",
-              "hover:border-emerald-400/50 hover:bg-emerald-500/10",
-              "shadow-lg shadow-black/20",
-              "backdrop-blur-sm",
-              "transition-all duration-200",
-              "lg:hidden",
-              "cursor-pointer"
-            )}
-            style={{
-              boxShadow:
-                "0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset",
-            }}
-            aria-label="Open menu"
-          >
-            <Icon
-              icon="solar:hamburger-menu-bold-duotone"
-              width={20}
-              height={20}
-              className="transition-colors duration-200"
-              style={{ color: "currentColor" }}
-            />
-          </motion.button>
-        )}
-      </AnimatePresence>
+        <Sidebar
+          isCollapsed={isCollapsed}
+          setIsCollapsed={setIsCollapsed}
+          isMobileOpen={isMobileOpen}
+          onMobileClose={() => setIsMobileOpen(false)}
+        />
 
-      <motion.main
-        animate={{ paddingLeft }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="flex-1 relative z-0 min-h-screen w-full"
-      >
-        <GridBeam />
-        <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-12 max-w-[1600px] mx-auto">
-          {children}
-        </div>
-      </motion.main>
-    </div>
+        {/* Mobile Menu Button - Only show when menu is closed */}
+        <AnimatePresence>
+          {!isMobileOpen && (
+            <motion.button
+              onClick={() => setIsMobileOpen(true)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className={clsx(
+                "fixed top-4 left-4 z-[60]",
+                "w-10 h-10 flex items-center justify-center",
+                "bg-[#0F0F11] border-2 border-white/[0.08] rounded-lg",
+                "text-neutral-400 hover:text-emerald-400",
+                "hover:border-emerald-400/50 hover:bg-emerald-500/10",
+                "shadow-lg shadow-black/20",
+                "backdrop-blur-sm",
+                "transition-all duration-200",
+                "lg:hidden",
+                "cursor-pointer"
+              )}
+              style={{
+                boxShadow:
+                  "0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset",
+              }}
+              aria-label="Open menu"
+            >
+              <Icon
+                icon="solar:hamburger-menu-bold-duotone"
+                width={20}
+                height={20}
+                className="transition-colors duration-200"
+                style={{ color: "currentColor" }}
+              />
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        <motion.main
+          animate={{ paddingLeft }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="flex-1 relative z-10 min-h-screen w-full"
+        >
+          <div className="p-4 sm:p-6 md:p-8 lg:p-12 max-w-[1600px] mx-auto">
+            {children}
+          </div>
+        </motion.main>
+      </div>
+    </SidebarContext.Provider>
   );
 };

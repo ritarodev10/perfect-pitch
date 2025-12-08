@@ -70,35 +70,36 @@ const KPICard = ({
       <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em] mb-3 relative z-10">
         {label}
       </p>
-      <div
-        className={`text-4xl md:text-5xl font-black tracking-tighter relative z-10 flex items-baseline ${
-          hasValue ? "text-white" : "text-neutral-700"
-        }`}
-      >
-        <CountUp to={value} />
-        <span
-          className={`text-xl ml-1 font-medium ${
-            hasValue ? "text-neutral-600" : "text-neutral-800"
+      <div className="flex justify-between items-center">
+        <div
+          className={`text-4xl md:text-5xl font-black tracking-tighter relative z-10 flex items-baseline flex-1 ${
+            hasValue ? "text-white" : "text-neutral-700"
           }`}
         >
-          {suffix}
-        </span>
+          <CountUp to={value} />
+          <span
+            className={`text-xl ml-1 font-medium ${
+              hasValue ? "text-neutral-600" : "text-neutral-800"
+            }`}
+          >
+            {suffix}
+          </span>
+        </div>
+        {icon && (
+          <Icon
+            icon={icon}
+            width={28}
+            height={28}
+            className="transition-all duration-300 group-hover:scale-110 z-10"
+            style={{
+              color: hasValue ? "#34d399" : "#6b7280",
+              filter: hasValue
+                ? "drop-shadow(0 0 8px rgba(16, 185, 129, 0.6)) drop-shadow(0 0 16px rgba(16, 185, 129, 0.3))"
+                : undefined,
+            }}
+          />
+        )}
       </div>
-      {icon && (
-        <Icon
-          icon={icon}
-          width={28}
-          height={28}
-          className="absolute top-6 right-6 transition-all duration-300 group-hover:scale-110 z-10"
-          style={{
-            color: hasValue ? "#34d399" : "#6b7280",
-            filter: hasValue
-              ? "drop-shadow(0 0 8px rgba(16, 185, 129, 0.6)) drop-shadow(0 0 16px rgba(16, 185, 129, 0.3))"
-              : undefined,
-          }}
-        />
-      )}
-
       {/* Micro-interaction: ambient glow on hover */}
       <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-(--accent)/10 rounded-full blur-3xl group-hover:bg-(--accent)/20 transition-colors duration-500" />
     </motion.div>
