@@ -496,6 +496,10 @@ export const UpcomingMatchCard = ({
                     </span>
                   </>
                 )}
+                <div className="h-3 w-px bg-white/20" />
+                <span className="text-[10px] font-medium text-white/60 uppercase tracking-wider">
+                  {isHome ? "Home" : "Away"}
+                </span>
               </div>
             </div>
           )}
@@ -685,34 +689,6 @@ export const UpcomingMatchCard = ({
                 );
               })()}
             </span>
-            {(() => {
-              // Use matchDetail to determine home/away if available (more accurate)
-              if (matchDetail?.event) {
-                const matchDetailIsHome =
-                  matchDetail.event.homeTeam.id === team.id;
-                if (
-                  matchDetail.event.venue?.name ||
-                  (matchDetailIsHome
-                    ? matchDetail.event.homeTeam?.venue?.name
-                    : matchDetail.event.awayTeam?.venue?.name)
-                ) {
-                  return (
-                    <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-wider">
-                      {matchDetailIsHome ? "Home" : "Away"}
-                    </span>
-                  );
-                }
-              }
-              // Fallback to isHome from currentMatch if matchDetail not available
-              if (isHome) {
-                return (
-                  <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-wider">
-                    Home
-                  </span>
-                );
-              }
-              return null;
-            })()}
           </div>
           {isPastMatch && currentMatch.status?.name && (
             <div className="flex items-center justify-center">
