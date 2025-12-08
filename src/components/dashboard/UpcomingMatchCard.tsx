@@ -450,7 +450,7 @@ export const UpcomingMatchCard = ({
 
       <div className="relative z-10 flex flex-col h-full sm:justify-between gap-2 sm:gap-0">
         {/* Top Section: Navigation and tournament info */}
-        <div className="flex flex-col gap-1.5 sm:gap-3 mb-2 sm:mb-4 md:mb-6">
+        <div className="flex flex-col gap-1.5 sm:gap-3 mb-2 sm:mb-4 md:mb-3">
           {/* Navigation and Match Type - Integrated header */}
           <div className="flex items-center justify-between">
             <button
@@ -516,7 +516,7 @@ export const UpcomingMatchCard = ({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 w-full sm:flex-1 py-1 sm:py-4 md:py-6"
+            className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 w-full sm:flex-1 py-1 sm:py-4 md:py-3"
           >
             {/* Left side: Team if home, Opponent if away */}
             <div className="flex flex-col items-center gap-1.5 sm:gap-2 md:gap-3 flex-1">

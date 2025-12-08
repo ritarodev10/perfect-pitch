@@ -262,8 +262,8 @@ export default async function Dashboard() {
               </div>
             </div>
 
-            {/* Bottom Section - Additional Content to Fill Space */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Bottom Section - Additional Content */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <PlayerLeaders playerStats={playerStats} />
               <TransfersSnapshot transfers={transfers} />
             </div>
