@@ -337,13 +337,13 @@ export const UpcomingMatchCard = ({
         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ delay: 0.6, duration: 0.6 }}
-        className="relative p-8 rounded-2xl glass-panel overflow-hidden group"
+        className="relative p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl glass-panel overflow-hidden group"
       >
         <div className="relative z-10 flex flex-col items-center text-center">
-          <span className="px-4 py-1.5 mb-8 text-[10px] font-bold tracking-[0.2em] text-black bg-white rounded-full uppercase shadow-lg">
+          <span className="px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6 md:mb-8 text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-black bg-white rounded-full uppercase shadow-lg">
             Next Fixture
           </span>
-          <p className="text-neutral-500 text-sm">No matches available</p>
+          <p className="text-neutral-500 text-xs sm:text-sm">No matches available</p>
         </div>
       </motion.div>
     );
@@ -439,7 +439,7 @@ export const UpcomingMatchCard = ({
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="relative h-full p-8 rounded-2xl glass-panel overflow-hidden group flex flex-col"
+      className="relative h-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl glass-panel overflow-hidden group flex flex-col"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -447,7 +447,7 @@ export const UpcomingMatchCard = ({
 
       <div className="relative z-10 flex flex-col h-full justify-between">
         {/* Top Section: Navigation and tournament info */}
-        <div className="flex flex-col gap-3 mb-6">
+        <div className="flex flex-col gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
           {/* Navigation and Match Type - Integrated header */}
           <div className="flex items-center justify-between">
             <button
@@ -484,20 +484,20 @@ export const UpcomingMatchCard = ({
           {/* Tournament and Round - Container with design */}
           {tournamentName && (
             <div className="flex items-center justify-center">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="text-[11px] font-semibold text-white/90 tracking-wide">
+              <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <span className="text-[9px] sm:text-[11px] font-semibold text-white/90 tracking-wide">
                   {tournamentName}
                 </span>
                 {roundDisplay && (
                   <>
-                    <div className="h-3 w-px bg-white/20" />
-                    <span className="text-[11px] font-medium text-white/70 tracking-wide">
+                    <div className="h-2.5 sm:h-3 w-px bg-white/20" />
+                    <span className="text-[9px] sm:text-[11px] font-medium text-white/70 tracking-wide">
                       {roundDisplay}
                     </span>
                   </>
                 )}
-                <div className="h-3 w-px bg-white/20" />
-                <span className="text-[10px] font-medium text-white/60 uppercase tracking-wider">
+                <div className="h-2.5 sm:h-3 w-px bg-white/20" />
+                <span className="text-[8px] sm:text-[10px] font-medium text-white/60 uppercase tracking-wider">
                   {isHome ? "Home" : "Away"}
                 </span>
               </div>
@@ -513,23 +513,23 @@ export const UpcomingMatchCard = ({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center justify-center gap-6 w-full flex-1 py-6"
+            className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 w-full flex-1 py-3 sm:py-4 md:py-6"
           >
             {/* Left side: Team if home, Opponent if away */}
-            <div className="flex flex-col items-center gap-3 flex-1">
+            <div className="flex flex-col items-center gap-1.5 sm:gap-2 md:gap-3 flex-1">
               <div className="relative">
-                <div className="absolute inset-0 bg-white/10 rounded-full blur-xl" />
+                <div className="absolute inset-0 bg-white/10 rounded-full blur-lg sm:blur-xl" />
                 <img
                   src={getTeamImageUrl(isHome ? team.id : opponent.id)}
                   alt={isHome ? team.name : opponent.name}
-                  className={`w-24 h-24 object-contain drop-shadow-2xl relative z-10 ${
+                  className={`w-14 h-14 sm:w-18 sm:h-18 md:w-24 md:h-24 object-contain drop-shadow-2xl relative z-10 ${
                     !isHome
                       ? "grayscale group-hover:grayscale-0 transition-all duration-500"
                       : ""
                   }`}
                 />
               </div>
-              <span className="text-xl font-black text-white tracking-tight">
+              <span className="text-sm sm:text-base md:text-xl font-black text-white tracking-tight text-center">
                 {isHome
                   ? team.shortName ||
                     team.nameCode ||
@@ -540,15 +540,15 @@ export const UpcomingMatchCard = ({
               </span>
             </div>
 
-            <div className="flex flex-col items-center gap-2 min-w-[100px]">
+            <div className="flex flex-col items-center gap-1 sm:gap-2 min-w-[60px] sm:min-w-[80px] md:min-w-[100px]">
               {isPastMatch &&
               ourScore !== undefined &&
               opponentScore !== undefined ? (
                 <>
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5">
                     {/* Left side: Home team score if we're home, Away team score if we're away */}
                     <span
-                      className={`text-4xl font-black leading-none ${
+                      className={`text-2xl sm:text-3xl md:text-4xl font-black leading-none ${
                         isHome
                           ? weWon
                             ? "text-green-400"
@@ -564,12 +564,12 @@ export const UpcomingMatchCard = ({
                     >
                       {isHome ? ourScore : opponentScore}
                     </span>
-                    <span className="text-2xl text-neutral-600 font-light">
+                    <span className="text-lg sm:text-xl md:text-2xl text-neutral-600 font-light">
                       -
                     </span>
                     {/* Right side: Away team score if we're home, Home team score if we're away */}
                     <span
-                      className={`text-4xl font-black leading-none ${
+                      className={`text-2xl sm:text-3xl md:text-4xl font-black leading-none ${
                         isHome
                           ? weLost
                             ? "text-green-400"
@@ -586,24 +586,24 @@ export const UpcomingMatchCard = ({
                       {isHome ? opponentScore : ourScore}
                     </span>
                   </div>
-                  <div className="mt-1">
+                  <div className="mt-0.5 sm:mt-1">
                     {weWon && (
-                      <div className="flex items-center gap-1.5 px-2.5 h-6  rounded-full bg-green-500/10 border border-green-500/20">
-                        <span className="text-[10px] font-bold text-green-400 uppercase tracking-wider">
+                      <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 h-5 sm:h-6 rounded-full bg-green-500/10 border border-green-500/20">
+                        <span className="text-[8px] sm:text-[10px] font-bold text-green-400 uppercase tracking-wider">
                           Win
                         </span>
                       </div>
                     )}
                     {weLost && (
-                      <div className="flex items-center gap-1.5 px-2.5 h-6 rounded-full bg-red-500/10 border border-red-500/20">
-                        <span className="text-[10px] font-bold text-red-400 uppercase tracking-wider">
+                      <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 h-5 sm:h-6 rounded-full bg-red-500/10 border border-red-500/20">
+                        <span className="text-[8px] sm:text-[10px] font-bold text-red-400 uppercase tracking-wider">
                           Loss
                         </span>
                       </div>
                     )}
                     {isDraw && (
-                      <div className="flex items-center gap-1.5 px-2.5 h-6 rounded-full bg-neutral-500/10 border border-neutral-500/20">
-                        <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
+                      <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 h-5 sm:h-6 rounded-full bg-neutral-500/10 border border-neutral-500/20">
+                        <span className="text-[8px] sm:text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
                           Draw
                         </span>
                       </div>
@@ -611,27 +611,27 @@ export const UpcomingMatchCard = ({
                   </div>
                 </>
               ) : (
-                <div className="text-3xl font-black text-neutral-600 italic tracking-tighter">
+                <div className="text-xl sm:text-2xl md:text-3xl font-black text-neutral-600 italic tracking-tighter">
                   VS
                 </div>
               )}
             </div>
 
             {/* Right side: Opponent if home, Team if away */}
-            <div className="flex flex-col items-center gap-3 flex-1">
+            <div className="flex flex-col items-center gap-1.5 sm:gap-2 md:gap-3 flex-1">
               <div className="relative">
-                <div className="absolute inset-0 bg-white/5 rounded-full blur-xl" />
+                <div className="absolute inset-0 bg-white/5 rounded-full blur-lg sm:blur-xl" />
                 <img
                   src={getTeamImageUrl(isHome ? opponent.id : team.id)}
                   alt={isHome ? opponent.name : team.name}
-                  className={`w-24 h-24 object-contain drop-shadow-2xl relative z-10 ${
+                  className={`w-14 h-14 sm:w-18 sm:h-18 md:w-24 md:h-24 object-contain drop-shadow-2xl relative z-10 ${
                     isHome
                       ? "grayscale group-hover:grayscale-0 transition-all duration-500"
                       : ""
                   }`}
                 />
               </div>
-              <span className="text-xl font-black text-white tracking-tight">
+              <span className="text-sm sm:text-base md:text-xl font-black text-white tracking-tight text-center">
                 {isHome
                   ? opponent.shortName ||
                     opponent.nameCode ||
@@ -645,10 +645,10 @@ export const UpcomingMatchCard = ({
         </AnimatePresence>
 
         {/* Bottom Section: Match Details */}
-        <div className="w-full border-t border-white/5 pt-5 space-y-3">
-          <div className="flex items-center justify-center gap-2.5">
-            <Calendar className="w-3.5 h-3.5 text-neutral-500" />
-            <span className="text-xs font-semibold text-neutral-300 tracking-wide">
+        <div className="w-full border-t border-white/5 pt-3 sm:pt-4 md:pt-5 space-y-2 sm:space-y-3">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5">
+            <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-neutral-500" />
+            <span className="text-[10px] sm:text-xs font-semibold text-neutral-300 tracking-wide">
               {matchDate.toLocaleDateString("en-US", {
                 weekday: "long",
                 month: "long",
@@ -657,12 +657,12 @@ export const UpcomingMatchCard = ({
             </span>
           </div>
           <div
-            className={`flex items-center justify-center gap-2.5 transition-all duration-300 ${
+            className={`flex items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5 transition-all duration-300 ${
               isLoadingMatchDetail ? "blur-sm opacity-60" : "blur-0 opacity-100"
             }`}
           >
-            <MapPin className="w-3.5 h-3.5 text-neutral-500" />
-            <span className="text-xs font-medium text-neutral-400 tracking-wide">
+            <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-neutral-500" />
+            <span className="text-[10px] sm:text-xs font-medium text-neutral-400 tracking-wide text-center">
               {(() => {
                 // Prioritize match detail data (most accurate, especially for tournaments like Supercoppa)
                 if (matchDetail?.event) {
@@ -699,7 +699,7 @@ export const UpcomingMatchCard = ({
           )}
           {isPastMatch && (
             <div
-              className={`mt-5 pt-5 border-t border-white/5 transition-all duration-300 ${
+              className={`mt-3 sm:mt-4 md:mt-5 pt-3 sm:pt-4 md:pt-5 border-t border-white/5 transition-all duration-300 ${
                 isLoadingMatchIncidents
                   ? "blur-sm opacity-60"
                   : "blur-0 opacity-100"
@@ -867,54 +867,54 @@ export const UpcomingMatchCard = ({
           )}
           {!isPastMatch ? (
             <div
-              className={`mt-5 pt-5 border-t border-white/5 transition-all duration-300 ${
+              className={`mt-3 sm:mt-4 md:mt-5 pt-3 sm:pt-4 md:pt-5 border-t border-white/5 transition-all duration-300 ${
                 isLoadingH2H ? "blur-sm opacity-60" : "blur-0 opacity-100"
               }`}
             >
               {h2hData?.teamDuel ? (
                 <>
-                  <div className="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider text-center mb-3">
+                  <div className="text-[9px] sm:text-[10px] font-semibold text-neutral-500 uppercase tracking-wider text-center mb-2 sm:mb-3">
                     Head-to-Head
                   </div>
-                  <div className="flex items-center justify-center gap-5">
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-green-400">
+                  <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5">
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-green-400">
                         {isHome
                           ? h2hData.teamDuel.homeWins
                           : h2hData.teamDuel.awayWins}
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         W
                       </span>
                     </div>
-                    <div className="h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-neutral-400">
+                    <div className="h-6 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-neutral-400">
                         {h2hData.teamDuel.draws}
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         D
                       </span>
                     </div>
-                    <div className="h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-red-400">
+                    <div className="h-6 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-red-400">
                         {isHome
                           ? h2hData.teamDuel.awayWins
                           : h2hData.teamDuel.homeWins}
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         L
                       </span>
                     </div>
-                    <div className="h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-neutral-300">
+                    <div className="h-6 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-neutral-300">
                         {h2hData.teamDuel.homeWins +
                           h2hData.teamDuel.awayWins +
                           h2hData.teamDuel.draws}
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         Total
                       </span>
                     </div>
@@ -922,42 +922,42 @@ export const UpcomingMatchCard = ({
                 </>
               ) : isLoadingH2H ? (
                 <div className="text-center">
-                  <div className="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider mb-3">
+                  <div className="text-[9px] sm:text-[10px] font-semibold text-neutral-500 uppercase tracking-wider mb-2 sm:mb-3">
                     Head-to-Head
                   </div>
-                  <div className="flex items-center justify-center gap-5">
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-neutral-600">
+                  <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5">
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-neutral-600">
                         -
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         W
                       </span>
                     </div>
-                    <div className="h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-neutral-600">
+                    <div className="h-6 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-neutral-600">
                         -
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         D
                       </span>
                     </div>
-                    <div className="h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-neutral-600">
+                    <div className="h-6 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-neutral-600">
                         -
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         L
                       </span>
                     </div>
-                    <div className="h-8 w-px bg-white/10" />
-                    <div className="flex flex-col items-center gap-1">
-                      <span className="text-lg font-bold text-neutral-600">
+                    <div className="h-6 sm:h-8 w-px bg-white/10" />
+                    <div className="flex flex-col items-center gap-0.5 sm:gap-1">
+                      <span className="text-base sm:text-lg font-bold text-neutral-600">
                         -
                       </span>
-                      <span className="text-[10px] text-neutral-500 font-medium">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium">
                         Total
                       </span>
                     </div>
