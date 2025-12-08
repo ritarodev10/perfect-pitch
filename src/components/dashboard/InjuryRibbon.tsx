@@ -19,19 +19,21 @@ export const InjuryRibbon = () => {
         <div className="absolute inset-0 bg-[var(--accent)]/5 animate-pulse-slow pointer-events-none" />
 
         <div className="flex items-center">
-          <div className="px-6 flex items-center gap-3 text-[var(--accent)] font-black uppercase text-[10px] tracking-[0.2em] whitespace-nowrap z-10 bg-black/80 backdrop-blur-xl h-full absolute left-0 border-r border-[var(--accent)]/20 shadow-[10px_0_20px_rgba(0,0,0,0.5)]">
-            <AlertCircle className="w-4 h-4" />
-            <span>Medical Report</span>
+          <div className="px-2 sm:px-4 md:px-6 py-2 sm:py-0 flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-[var(--accent)] font-black uppercase text-[8px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.2em] z-10 bg-black h-full absolute left-0 border-r border-[var(--accent)]/20 shadow-[10px_0_20px_rgba(0,0,0,0.8)]">
+            <AlertCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="text-center leading-tight sm:leading-normal">
+              Medical<br className="sm:hidden" /> Report
+            </span>
           </div>
 
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
             transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-            className="flex gap-16 pl-48 whitespace-nowrap"
+            className="flex gap-8 sm:gap-12 md:gap-16 pl-20 sm:pl-36 md:pl-48 whitespace-nowrap"
           >
             {[...injuries, ...injuries, ...injuries, ...injuries].map(
               (injury, index) => (
-                <div key={index} className="flex items-center gap-3 text-sm">
+                <div key={index} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
                   <span className="font-bold text-white tracking-wide">
                     {injury.player}
                   </span>
@@ -39,7 +41,7 @@ export const InjuryRibbon = () => {
                   <span className="text-neutral-300 font-medium">
                     {injury.reason}
                   </span>
-                  <span className="text-[var(--accent)] text-xs font-bold uppercase tracking-wider bg-[var(--accent)]/10 px-2 py-0.5 rounded-full">
+                  <span className="text-[var(--accent)] text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-[var(--accent)]/10 px-1.5 sm:px-2 py-0.5 rounded-full">
                     Return: {injury.returnDate}
                   </span>
                 </div>

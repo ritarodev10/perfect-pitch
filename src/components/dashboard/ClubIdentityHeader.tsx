@@ -116,9 +116,9 @@ export const ClubIdentityHeader = ({ teamData }: ClubIdentityHeaderProps) => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="flex sm:flex-col lg:flex-col items-start sm:items-end gap-2 sm:gap-1 sm:text-right"
+          className="flex flex-col sm:flex-col lg:flex-col items-start sm:items-end gap-2 sm:gap-1 sm:text-right"
         >
-          <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0">
+          <div className="flex flex-col sm:flex-col items-start sm:items-end gap-0.5 sm:gap-0">
             <p className="text-[10px] sm:text-xs font-bold text-neutral-500 uppercase tracking-[0.1em] sm:tracking-[0.2em] sm:mb-1">
               Home Ground
             </p>
@@ -132,7 +132,7 @@ export const ClubIdentityHeader = ({ teamData }: ClubIdentityHeaderProps) => {
             )}
           </div>
           {team.venue.capacity && (
-            <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0 sm:mt-2 md:mt-3 sm:pt-2 md:pt-3 sm:border-t border-white/10">
+            <div className="flex flex-col sm:flex-col items-start sm:items-end gap-0.5 sm:gap-0 mt-2 sm:mt-2 md:mt-3 pt-2 sm:pt-2 md:pt-3 border-t sm:border-t border-white/10">
               <p className="text-[10px] sm:text-xs font-bold text-neutral-500 uppercase tracking-[0.1em] sm:tracking-[0.2em] sm:mb-1">
                 Capacity
               </p>

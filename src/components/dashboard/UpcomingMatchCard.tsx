@@ -343,7 +343,9 @@ export const UpcomingMatchCard = ({
           <span className="px-3 sm:px-4 py-1 sm:py-1.5 mb-4 sm:mb-6 md:mb-8 text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-black bg-white rounded-full uppercase shadow-lg">
             Next Fixture
           </span>
-          <p className="text-neutral-500 text-xs sm:text-sm">No matches available</p>
+          <p className="text-neutral-500 text-xs sm:text-sm">
+            No matches available
+          </p>
         </div>
       </motion.div>
     );

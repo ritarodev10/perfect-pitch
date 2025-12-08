@@ -166,7 +166,7 @@ export const QuickKPICards = ({
     )?.position || 0;
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
       <KPICard
         label="Goals For"
         value={Math.round(goalsFor)}
@@ -192,22 +192,24 @@ export const QuickKPICards = ({
         delay={0.4}
         icon="mdi:shield-check"
       />
-      {teamPosition > 0 ? (
-        <KPICard
-          label="League Position"
-          value={teamPosition}
-          delay={0.5}
-          icon="mdi:trophy"
-        />
-      ) : (
-        <KPICard
-          label="Pass Accuracy"
-          value={Math.round(passAccuracy)}
-          suffix="%"
-          delay={0.5}
-          icon="mdi:shoe-cleat"
-        />
-      )}
+      <div className="col-span-2 md:col-span-1">
+        {teamPosition > 0 ? (
+          <KPICard
+            label="League Position"
+            value={teamPosition}
+            delay={0.5}
+            icon="mdi:trophy"
+          />
+        ) : (
+          <KPICard
+            label="Pass Accuracy"
+            value={Math.round(passAccuracy)}
+            suffix="%"
+            delay={0.5}
+            icon="mdi:shoe-cleat"
+          />
+        )}
+      </div>
     </div>
   );
 };
