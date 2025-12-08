@@ -122,7 +122,7 @@ export const SmartInsightCards = ({
   const getIcon = (type: string) => {
     switch (type) {
       case "positive":
-        return <TrendingUp className="w-5 h-5 text-green-500" />;
+        return <TrendingUp className="w-5 h-5 text-emerald-400" />;
       case "neutral":
         return <ShieldCheck className="w-5 h-5 text-blue-500" />;
       case "highlight":

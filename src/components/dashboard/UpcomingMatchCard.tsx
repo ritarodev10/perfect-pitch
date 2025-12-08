@@ -550,14 +550,14 @@ export const UpcomingMatchCard = ({
                       className={`text-2xl sm:text-3xl md:text-4xl font-black leading-none ${
                         isHome
                           ? weWon
-                            ? "text-green-400"
+                            ? "text-emerald-400"
                             : weLost
-                            ? "text-red-400"
+                            ? "text-red-500"
                             : "text-white"
                           : weLost
-                          ? "text-green-400"
+                          ? "text-emerald-400"
                           : weWon
-                          ? "text-red-400"
+                          ? "text-red-500"
                           : "text-white"
                       }`}
                     >
@@ -571,14 +571,14 @@ export const UpcomingMatchCard = ({
                       className={`text-2xl sm:text-3xl md:text-4xl font-black leading-none ${
                         isHome
                           ? weLost
-                            ? "text-green-400"
+                            ? "text-emerald-400"
                             : weWon
-                            ? "text-red-400"
+                            ? "text-red-500"
                             : "text-white"
                           : weWon
-                          ? "text-green-400"
+                          ? "text-emerald-400"
                           : weLost
-                          ? "text-red-400"
+                          ? "text-red-500"
                           : "text-white"
                       }`}
                     >
@@ -587,15 +587,15 @@ export const UpcomingMatchCard = ({
                   </div>
                   <div className="mt-0.5 sm:mt-1">
                     {weWon && (
-                      <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 h-5 sm:h-6 rounded-full bg-green-500/10 border border-green-500/20">
-                        <span className="text-[8px] sm:text-[10px] font-bold text-green-400 uppercase tracking-wider">
+                      <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 h-5 sm:h-6 rounded-full bg-emerald-400/10 border border-emerald-400/20">
+                        <span className="text-[8px] sm:text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
                           Win
                         </span>
                       </div>
                     )}
                     {weLost && (
                       <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 h-5 sm:h-6 rounded-full bg-red-500/10 border border-red-500/20">
-                        <span className="text-[8px] sm:text-[10px] font-bold text-red-400 uppercase tracking-wider">
+                        <span className="text-[8px] sm:text-[10px] font-bold text-red-500 uppercase tracking-wider">
                           Loss
                         </span>
                       </div>
@@ -791,8 +791,8 @@ export const UpcomingMatchCard = ({
                                   <span
                                     className={`font-semibold ${
                                       leftIsOurTeam
-                                        ? "text-green-400"
-                                        : "text-red-400"
+                                        ? "text-emerald-400"
+                                        : "text-red-500"
                                     }`}
                                   >
                                     {leftGoal.time}
@@ -831,8 +831,8 @@ export const UpcomingMatchCard = ({
                                   <span
                                     className={`font-semibold ${
                                       rightIsOurTeam
-                                        ? "text-green-400"
-                                        : "text-red-400"
+                                        ? "text-emerald-400"
+                                        : "text-red-500"
                                     }`}
                                   >
                                     {rightGoal.time}
@@ -873,7 +873,7 @@ export const UpcomingMatchCard = ({
                   </div>
                   <div className="flex items-center justify-center gap-2.5 sm:gap-4 md:gap-5">
                     <div className="flex flex-col items-center gap-0">
-                      <span className="text-sm sm:text-lg font-bold text-green-400">
+                      <span className="text-sm sm:text-lg font-bold text-emerald-400">
                         {isHome
                           ? h2hData.teamDuel.homeWins
                           : h2hData.teamDuel.awayWins}
@@ -893,7 +893,7 @@ export const UpcomingMatchCard = ({
                     </div>
                     <div className="h-5 sm:h-8 w-px bg-white/10" />
                     <div className="flex flex-col items-center gap-0">
-                      <span className="text-sm sm:text-lg font-bold text-red-400">
+                      <span className="text-sm sm:text-lg font-bold text-red-500">
                         {isHome
                           ? h2hData.teamDuel.awayWins
                           : h2hData.teamDuel.homeWins}

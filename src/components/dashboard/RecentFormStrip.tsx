@@ -117,7 +117,7 @@ export const RecentFormStrip = ({
   const getColor = (result: string) => {
     switch (result) {
       case "W":
-        return "bg-green-500";
+        return "bg-emerald-400";
       case "D":
         return "bg-neutral-500";
       case "L":
@@ -130,7 +130,7 @@ export const RecentFormStrip = ({
   const getScoreColor = (result: string) => {
     switch (result) {
       case "W":
-        return "text-green-500";
+        return "text-emerald-400";
       case "D":
         return "text-white";
       case "L":

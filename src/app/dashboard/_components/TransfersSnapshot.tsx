@@ -58,8 +58,8 @@ export const TransfersSnapshot = ({ transfers }: TransfersSnapshotProps) => {
         {transfersIn.length > 0 && (
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <ArrowRight className="w-4 h-4 text-green-500" />
-              <span className="text-xs font-bold text-green-500 uppercase tracking-widest">
+              <ArrowRight className="w-4 h-4 text-emerald-400" />
+              <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">
                 Transfers In
               </span>
             </div>
@@ -72,7 +72,7 @@ export const TransfersSnapshot = ({ transfers }: TransfersSnapshotProps) => {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.0 + index * 0.05, duration: 0.4 }}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-green-500/10 border border-green-500/20 hover:bg-green-500/20 transition-all duration-300"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-emerald-400/10 border border-emerald-400/20 hover:bg-emerald-400/20 transition-all duration-300"
                   >
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/10 overflow-hidden">
                       {transfer.player.id && !imageError ? (
@@ -101,7 +101,7 @@ export const TransfersSnapshot = ({ transfers }: TransfersSnapshotProps) => {
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs font-bold text-green-500">
+                      <p className="text-xs font-bold text-emerald-400">
                         {formatTransferFee(transfer.transferFee)}
                       </p>
                       {transfer.transferFeeDescription && (

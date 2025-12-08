@@ -58,7 +58,7 @@ export const StandingsSnippet = ({
               <th className="w-8 pb-2 text-left"></th>
               <th className="pb-2 text-left"></th>
               <th className="w-8 pb-2 text-center">P</th>
-              <th className="w-8 pb-2 text-center text-green-500">W</th>
+              <th className="w-8 pb-2 text-center text-emerald-400">W</th>
               <th className="w-8 pb-2 text-center">D</th>
               <th className="w-8 pb-2 text-center text-red-500">L</th>
               <th className="w-12 pb-2 text-center pr-2">PTS</th>
@@ -127,7 +127,7 @@ export const StandingsSnippet = ({
                     </span>
                   </td>
                   <td className="p-3 text-center">
-                    <span className="text-xs font-medium text-green-500">
+                    <span className="text-xs font-medium text-emerald-400">
                       {row.wins}
                     </span>
                   </td>

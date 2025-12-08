@@ -358,8 +358,8 @@ export const StandingsComparisonChart = ({
           >
             <defs>
               <linearGradient id="currentGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#e51616" stopOpacity={0.2} />
-                <stop offset="100%" stopColor="#e51616" stopOpacity={1} />
+                <stop offset="0%" stopColor="#34d399" stopOpacity={0.2} />
+                <stop offset="100%" stopColor="#34d399" stopOpacity={1} />
               </linearGradient>
               <linearGradient
                 id="historicalGradient"
@@ -368,8 +368,8 @@ export const StandingsComparisonChart = ({
                 x2="1"
                 y2="0"
               >
-                <stop offset="0%" stopColor="#6b7280" stopOpacity={0.2} />
-                <stop offset="100%" stopColor="#6b7280" stopOpacity={1} />
+                <stop offset="0%" stopColor="#ef4444" stopOpacity={0.2} />
+                <stop offset="100%" stopColor="#ef4444" stopOpacity={1} />
               </linearGradient>
             </defs>
             <XAxis
@@ -434,7 +434,7 @@ export const StandingsComparisonChart = ({
                         <div className="flex items-center gap-2 mb-1">
                           <div
                             className="w-2 h-2 rounded-full"
-                            style={{ backgroundColor: "#e51616" }}
+                            style={{ backgroundColor: "#34d399" }}
                           />
                           <span className="text-xs font-semibold text-white">
                             Current: Position {currentData.current}
@@ -452,7 +452,7 @@ export const StandingsComparisonChart = ({
                         <div className="flex items-center gap-2">
                           <div
                             className="w-2 h-2 rounded-full"
-                            style={{ backgroundColor: "#6b7280" }}
+                            style={{ backgroundColor: "#ef4444" }}
                           />
                           <span className="text-xs font-semibold text-white">
                             {selectedSeason?.seasonName || "Historical"}:
@@ -487,10 +487,10 @@ export const StandingsComparisonChart = ({
                 dataKey="current"
                 stroke="url(#currentGradient)"
                 strokeWidth={3}
-                dot={{ r: 3, fill: "#e51616", strokeWidth: 2 }}
+                dot={{ r: 3, fill: "#34d399", strokeWidth: 2 }}
                 activeDot={{
-                  r: 6,
-                  fill: "#e51616",
+                  r: 5,
+                  fill: "#34d399",
                   stroke: "#fff",
                   strokeWidth: 2,
                 }}
@@ -504,13 +504,18 @@ export const StandingsComparisonChart = ({
                 type="monotone"
                 dataKey="historical"
                 name={selectedSeason.seasonName || "Historical"}
-                stroke="#9ca3af"
-                strokeWidth={3}
+                stroke="#ef4444"
+                strokeWidth={1}
                 strokeDasharray="6 4"
-                dot={{ r: 4, fill: "#9ca3af", strokeWidth: 2, stroke: "#fff" }}
+                dot={{
+                  r: 3,
+                  fill: "#ef4444",
+                  strokeWidth: 1,
+                  stroke: "#ef4444",
+                }}
                 activeDot={{
-                  r: 7,
-                  fill: "#9ca3af",
+                  r: 5,
+                  fill: "#ef4444",
                   stroke: "#fff",
                   strokeWidth: 2,
                 }}

@@ -31,7 +31,7 @@ const getPositionColor = (position: string | undefined): string => {
   const colorMap: Record<string, string> = {
     GK: "text-yellow-500",
     DF: "text-blue-500",
-    MF: "text-green-500",
+    MF: "text-emerald-400",
     FW: "text-red-500",
   };
   return colorMap[formatted] || "text-neutral-500";
@@ -199,7 +199,7 @@ export const PlayerLeaders = ({ playerStats }: PlayerLeadersProps) => {
       player: topGoals,
       value: topGoals?.statistics.goals ?? 0,
       suffix: "goals",
-      color: "text-green-500",
+      color: "text-emerald-400",
     },
     {
       label: "Top Assists",

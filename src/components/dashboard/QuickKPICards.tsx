@@ -92,9 +92,9 @@ const KPICard = ({
             height={28}
             className="transition-all duration-300 group-hover:scale-110 z-10"
             style={{
-              color: hasValue ? "#34d399" : "#6b7280",
+              color: hasValue ? "#34d399" : "#6b7280", // emerald-400
               filter: hasValue
-                ? "drop-shadow(0 0 8px rgba(16, 185, 129, 0.6)) drop-shadow(0 0 16px rgba(16, 185, 129, 0.3))"
+                ? "drop-shadow(0 0 8px rgba(52, 211, 153, 0.6)) drop-shadow(0 0 16px rgba(52, 211, 153, 0.3))"
                 : undefined,
             }}
           />
